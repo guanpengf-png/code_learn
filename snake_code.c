@@ -105,7 +105,35 @@ static int snake_hit_self(const Snake* s,const Point* head){
         return 0;
 
     }
+}
+static int snake_reserve(Point **,int* cap,int need){
+    if(need<=*cap){
+        return 1;
 
+    }
+    int cnap=*cap?*cap*2: INIT_CAP;
+    while(cnap<need){
+        ncap*=2;
+
+    }
+    
+
+}
+static void snake_step(Snake* s,int grow){
+    Point new_head={
+        s->body[0].x+s->dir.x,
+        s->body[0].y+s->dir.y,
+    };
+    if (grow)
+    {
+        if(!snake_reserve(&s->body,&s->cap,s->len+1)){
+            fprintf(stderr,"relloc failed\n");
+            exit(1);
+
+        }
+
+    }
+    
 
 
 }
