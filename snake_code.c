@@ -88,6 +88,28 @@ static void draw(const Game* g){
         printf("game over %d\n",g->score);
     }
     }
+static int point_eq(const Point* a,const Point* b){
+    return a->x==b->x&&a->y==b->y;
+}
+static int inbound(const Point* p){
+    return p->x>=0&&p->x<MAP_W&&p->y>0&&p->y<MAP_H;
+}
+static int snake_hit_self(const Snake* s,const Point* head){
+    const Point* p=s->body+1;
+    const Point* end=s->body+s->len;
+    for(;p<end;p++){
+        if(point_eq(p,head)){
+            return 1;
+
+        }
+        return 0;
+
+    }
+
+
+
+}
+
 static void game_stick(Game* g){
     if(!g->alive){
         return;
@@ -101,6 +123,14 @@ static void game_stick(Game* g){
         return;
 
     }
+    int grow=point_eq(&next,&g->food);
+    snake_step(&g->snake,grow);
+    if (grow)
+    {
+        g->score+=10;
+        spawn_food(g);
+    }
+    
 
 
 }
