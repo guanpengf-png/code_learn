@@ -48,11 +48,46 @@ static void paint(Game* g){
     *cell_at(g,g->food.x,g->food.y)='*';
     //get snake body;
     Point *p=g->snake.body;
-    
+    Point *end=g->snake.body+g->snake.len;
+    if(p<end){
+        *cell_at(g,p->x,p->y)='@';
+    }
 
-
-
+    //draw body
+    for (p=g->snake.body+1;p<end;p++)
+    {
+        *cell_at(g,p->x,p->y)='o';
+    }
 }
+static void draw(const Game* g){
+    printf("\033[2J\033[H");
+    printf("score=%d len=%d wasd move q\n",g->score,g->snake.len);
+    printf("+");
+    for(int i=0;i<MAP_W;i++){
+        putchar('-');
+
+    }
+    printf("\n");
+    const char* row=g->cell;
+    for(int y=0;y<MAP_H;y++){
+        putchar('|');
+        fwrite(row,1,MAP_W,stdout);
+        putchar('|');
+        row+=MAP_W;
+    }
+    //bottom
+    printf('+');
+    for (int i = 0; i < MAP_W; i++)
+    {
+        putchar('-');
+
+    }
+    printf("+\n");
+    if (!g->alive)
+    {
+        printf("game over %d\n",g->score);
+    }
+    }
 int main(){
     srand((unsigned)time(NULL));
     Game game;
