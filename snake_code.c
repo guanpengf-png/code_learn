@@ -88,6 +88,22 @@ static void draw(const Game* g){
         printf("game over %d\n",g->score);
     }
     }
+static void game_stick(Game* g){
+    if(!g->alive){
+        return;
+    }
+    Point next ={
+        g->snake.body[0].x+g->snake.dir.x,
+        g->snake.body[0].y+g->snake.dir.y,
+    };
+    if(!in_bound(&next)||snake_hit_self(&g->snake,&next)){
+        g->alive=0;
+        return;
+
+    }
+
+
+}
 int main(){
     srand((unsigned)time(NULL));
     Game game;
