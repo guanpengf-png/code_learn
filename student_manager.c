@@ -15,7 +15,7 @@ typedef struct Student{
 static void printf_menu(void);
 static float cal_avg(const Student*s);
 static void clear_stdin(void);
-static int read_line(char* buf,size_t);
+static int read_line(char* buf,size_t n);
 static Student *find_by_id(Student* head,int id);
 static Student* Student_create(int id,char*name,float chinese,float math,float english);
 static int list_add(Student **head,int id,const char*name,float chinese,float math,float english);
@@ -42,6 +42,21 @@ static void printf_menu(void){
     puts("7studnet manager load");
     puts("0studnet manager tuichu");
     puts("studnet manager choice");
+}
+static void clear_stdin(void){
+    int c;
+    while ((c=getchar())!='\n'&&c!=EOF)
+    {
+        
+    }
+    
+}
+static int read_line(char* buf,size_t n){
+    if (!fgets(buf,(int)n,stdin))
+    {
+    
+    }
+    
 }
 
 
