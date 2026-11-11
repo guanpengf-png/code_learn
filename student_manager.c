@@ -10,11 +10,24 @@ typedef struct Student{
     float chinese;
     float math;
     float english;
+    struct Student *next;
 }Student;
 static void printf_menu(void);
 static float cal_avg(const Student*s);
 static void clear_stdin(void);
 static int read_line(char* buf,size_t);
+static Student *find_by_id(Student* head,int id);
+static Student* Student_create(int id,char*name,float chinese,float math,float english);
+static int list_add(Student **head,int id,const char*name,float chinese,float math,float english);
+static int list_delete(Student**head,int id);
+static int list_update(Student**head,int id,const char*name,float chinese,float math,float english);
+static void list_print_one(const Student*s);
+static void list_all_all(const Student*s);
+static void list_search(Student *head,int id);
+static void list_free(Student**head);
+static int list_save(const Student*head,const char* path);
+static int list_load(Student**head,const char* path);
+
 
 
 int main(){
