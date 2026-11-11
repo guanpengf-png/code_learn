@@ -27,7 +27,22 @@ static void list_search(Student *head,int id);
 static void list_free(Student**head);
 static int list_save(const Student*head,const char* path);
 static int list_load(Student**head,const char* path);
+static void menu_add(Student **head);
+static void menu_delete(Student **head);
+static void menu_update(Student *head);
+static void menu_search(Student *head);
+static void printf_menu(void){
+    puts("1studnet manager add");
+    puts("2studnet manager delete");
+    puts("3studnet manager update");
+    puts("4nstudnet manager search");
+    puts("5studnet manager save");
 
+    puts("6studnet manager show");
+    puts("7studnet manager load");
+    puts("0studnet manager tuichu");
+    puts("studnet manager choice");
+}
 
 
 int main(){
