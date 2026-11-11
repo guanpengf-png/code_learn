@@ -97,10 +97,39 @@ static int list_add(Student **head,int id,const char*name,float chinese,float ma
         printf("error");
         return 0;
     }
+    node->next=*head;
+    *head=node;
+    return 1;
     
     
 }
-static int list_delete(Student**head,int id);
+static int list_delete(Student**head,int id){
+    Student* cur=*head;
+    Student* prev=NULL;
+    while (cur!=NULL)
+    {
+        if (cur->id==id)
+        {
+            if (prev==head)
+            {
+                *head=cur->next;
+            }
+            else{
+                prev->next=cur->next;
+            }
+            free(cur);
+            return 1;
+            
+        }
+        prev=cur;
+        cur=cur->next;
+        
+    }
+    return 0;
+    
+
+}
+
 static Student *find_by_id(Student* head,int id){
     Student* q=head;
     if (q!=NULL)
