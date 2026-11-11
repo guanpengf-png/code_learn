@@ -180,6 +180,7 @@ static void list_search(Student *head,int id){
     
 }
 
+
 static Student *find_by_id(Student* head,int id){
     Student* q=head;
     if (q!=NULL)
@@ -191,6 +192,18 @@ static Student *find_by_id(Student* head,int id){
         q=q->next;
     }
     retur NULL;
+    
+}
+static void list_free(Student**head){
+    Student*p=*head;
+    while (p!=NULL)
+    {
+        Student* next=p->next;
+        free(p);
+        p=next;
+
+    }
+    *head=NULL;
     
 }
 
