@@ -164,7 +164,19 @@ static void list_all_all(const Student*s){
         n++;
     }
     printf("%d,\n",n);
+
     
+    
+}
+static void list_search(Student *head,int id){
+    Student*p=find_by_id(head,id);
+    if (!p)
+    {
+        printf("no student id%d",id);
+        return;
+    }
+    printf("result");
+    list_print_one(p);
     
 }
 
