@@ -85,7 +85,33 @@ static Student* Student_create(int id,char*name,float chinese,float math,float e
 static float cal_avg(const Student*s){
     return (s->chinese+s->math+s->english)/3.0;
 }
+static int list_add(Student **head,int id,const char*name,float chinese,float math,float english){
+    if (find_by_id(*head,id)!=NULL)
+    {
+        printf("have studnet");
+        return 0;
+    }
+    Student *node=Student_create(id,name,chinese,math,english);
+    if (!node)
+    {
+        printf("error");
+        return 0;
+    }
+    
+    
+}
+static int list_delete(Student**head,int id);
 static Student *find_by_id(Student* head,int id){
+    Student* q=head;
+    if (q!=NULL)
+    {
+        if (q->id==id)
+        {
+            return q;
+        }
+        q=q->next;
+    }
+    retur NULL;
     
 }
 
