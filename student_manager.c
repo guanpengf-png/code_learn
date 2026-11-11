@@ -54,8 +54,15 @@ static void clear_stdin(void){
 static int read_line(char* buf,size_t n){
     if (!fgets(buf,(int)n,stdin))
     {
-    
+        return 0;
     }
+    size_t len = strlen(buf);
+    if (len>0&&buf[len-1]=='\n')
+    {
+        buf[len-1]='\0';
+    }
+    return 1;
+    
     
 }
 
