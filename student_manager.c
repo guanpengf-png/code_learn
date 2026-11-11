@@ -129,6 +129,28 @@ static int list_delete(Student**head,int id){
     
 
 }
+static int list_update(Student**head,int id,const char*name,float chinese,float math,float english){
+    Student* s=find_by_id(head,id);
+    if (!s)
+    {
+        return 0;
+    }
+    strncpy(s->name,name,NAME_LEN-1);
+    s->name[NAME_LEN-1]='\0';
+    s->chinese=chinese;
+    s->math=math;
+    s->english=english;
+    return 1;
+
+
+    
+}
+static void list_print_one(const Student*s){
+    printf("%-6d id,%-10s,%f chinese,%f math,%f english",s->english,s->chinese,s->math,s->english);
+}
+static void list_all_all(const Student*s){
+    
+}
 
 static Student *find_by_id(Student* head,int id){
     Student* q=head;
