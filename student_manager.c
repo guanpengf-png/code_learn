@@ -85,6 +85,9 @@ static Student* Student_create(int id,char*name,float chinese,float math,float e
 static float cal_avg(const Student*s){
     return (s->chinese+s->math+s->english)/3.0;
 }
+static Student *find_by_id(Student* head,int id){
+    
+}
 
 int main(){
     Student* head=NULL;
