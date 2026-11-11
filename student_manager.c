@@ -149,6 +149,22 @@ static void list_print_one(const Student*s){
     printf("%-6d id,%-10s,%f chinese,%f math,%f english",s->english,s->chinese,s->math,s->english);
 }
 static void list_all_all(const Student*s){
+    if (!s)
+    {
+        printf("no student");
+        return;
+    }
+    printf("all studnet");
+    const Student*p=s;
+    int n=0;
+    while (p!=NULL)
+    {
+        list_print_one(p);
+        p=p->next;
+        n++;
+    }
+    printf("%d,\n",n);
+    
     
 }
 
