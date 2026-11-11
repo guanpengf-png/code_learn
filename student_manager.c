@@ -5,7 +5,7 @@
 #define NAME_LEN 32
 #define DATA_FILE "student.txt"
 typedef struct Student{
-    int i;
+    int id;
     char name[NAME_LEN];
     float chinese;
     float math;
@@ -63,6 +63,23 @@ static int read_line(char* buf,size_t n){
     }
     return 1;
     
+    
+}
+static Student* Student_create(int id,char*name,float chinese,float math,float english){
+    Student *node=(Student*)malloc(sizeof(Student));
+    if (!node)
+    {
+        return NULL;
+    }
+    node->id=id;
+    strncpy(node->name,name,NAME_LEN-1);
+    node->name[NAME_LEN-1]='\0';
+    node->chinese=chinese;
+    node->english=english;
+    node->math=math;
+    node->next=NULL;
+    return node;
+
     
 }
 
