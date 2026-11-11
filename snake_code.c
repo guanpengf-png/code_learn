@@ -59,6 +59,117 @@ static void paint(Game* g){
         *cell_at(g,p->x,p->y)='o';
     }
 }
+static void snake_init(Snake*s,int x,int y){
+    s->body=NULL;
+    s->len=0;
+    s->cap=0;
+    s->dir=(Point){1,0};
+    if (!snake_reserve(&s->body,&s->cap,4))
+    {
+        fprintf(stderr,"malloc failded\n");
+        exit(1);
+    }
+    s->body[0]=(Point){x,y};
+    s->body[1]=(Point){x-1,y};
+    s->body[2]=(Point){x-2,y}
+    s->len=3;
+    
+
+}
+static void game_init(Game* g){
+    g->cell=malloc((size_t)MAP_H*MAP_W);
+    if (!g->cell)
+    {
+        fprintf(stderr,"malloc failed");
+        exit(1);
+    }
+    snake_init(&g->snake,MAP_W/2,MAP_H/2);
+    g->score=0;
+    g->alive=0;
+    spawn_food(g);
+    
+}
+static void snake_free(Snake*s){
+    free(s->body);
+    s->body=NULL;
+    s->len=0;
+    s->cap=0;
+}
+static void game_free(Game* g){
+    snake_free(&g->snake);
+    free(g->cell);
+    g->cell=NULL;
+
+}
+typedef void(*Dirhandle)(Snake*s);
+typedef struct{
+    char key;
+    Dirhandle fn;
+}KeyBind;
+static void go_up(Snake*s){
+    if (s->dir.y!= 1)
+    {
+        s->dir=(Point){0,1};
+    }
+    
+
+}
+static void go_down(Snake*s){
+    if (s->dir.y!=-1)
+    {
+        s->dir=(Point){0,-1};
+    }
+    
+
+}
+static void go_right(Snake*s){
+    if (s->dir.x!=-1)
+    {
+        s->dir=(Point){1,0};
+    }
+    
+
+}
+static void go_left(Snake*s){
+    if (s->dir.x!=1)
+    {
+        s->dir=(Point){-1,0};
+    }
+    
+}
+static const KeyBind BINDS[]={
+    {'w',go_up},
+    {'k',go_up},
+    {'s',go_down},
+    {'j',go_down},
+    {'a',go_left},
+    {'d',go_right},
+    {'l',go_right},
+
+}
+
+static int handle_key(Game*g,int ch){
+    ch=tolower(ch);
+    if(ch=='q'){
+        return 0;
+
+    }
+    const KeyBind *b=BINDS;
+    const KeyBind *end =BINDS+sizeof BINDS/sizeof *BINDS;
+    for ( ;b<end; b++)
+    {
+        if (b->key==ch)
+        {
+            b->fn(&g->snake);
+            break;
+        }
+        
+    }
+    game_tick(g);
+    retuen 1;
+    
+
+}
 static void draw(const Game* g){
     printf("\033[2J\033[H");
     printf("score=%d len=%d wasd move q\n",g->score,g->snake.len);
@@ -106,17 +217,26 @@ static int snake_hit_self(const Snake* s,const Point* head){
 
     }
 }
-static int snake_reserve(Point **,int* cap,int need){
+static int snake_reserve(Point **body,int* cap,int need){
     if(need<=*cap){
         return 1;
 
     }
     int cnap=*cap?*cap*2: INIT_CAP;
     while(cnap<need){
-        ncap*=2;
+        cnap*=2;
 
     }
+    Point* p=realloc(*body,(size_t)cnap*sizeof *p);
+    if (!p)
+    {
+        return 0;
+    }
+    *body=p;
+    *cap=cnap;
+    return 1;
     
+
 
 }
 static void snake_step(Snake* s,int grow){
@@ -137,7 +257,34 @@ static void snake_step(Snake* s,int grow){
 
 
 }
+static int occupied_by_snake(const Snake *s,const Point *pt){
+    const Point*p=s->body;
+    const Point*end=s->body+s->len;
+    for (; p<end; p++)
+    {
+        if (point_eq(p,pt))
+        {
+            return 1;
+        }
+        
+    }
+    return 0;
+    
 
+}
+static void spawn_food(Game* g){
+    Point cand;
+    int guard=0;
+    do{
+        cand.x=rand()%MAP_W;
+        cand.y=rand()%MAP_H;
+        if(++guard>10000){
+            break;
+        }
+    }while (occupied_by_snake(&g->snake,&cand));
+    
+    
+}
 static void game_stick(Game* g){
     if(!g->alive){
         return;
