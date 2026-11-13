@@ -47,7 +47,7 @@ int main(void)
     printf("1. drop(cursor)\n");
     drop(cursor);
     printf("  main 里 cursor == NULL ? %s\n", cursor == NULL ? "是" : "否");
-    printf("  *cursor = %d\n", *cursor);
+    printf("  cursor = %p\n", cursor);
 
     /* 函数里打印“动了”。cursor 仍指向 10。 */
     printf("2. step(cursor)\n");

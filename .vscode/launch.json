@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/xiaojinghan/Documents/GitHub/code_learn/point",
-      "program": "/Users/xiaojinghan/Documents/GitHub/code_learn/point/build/Debug/outDebug"
+      "cwd": ".",
+      "program": "build/Debug/outDebug"
     }
   ]
 }
