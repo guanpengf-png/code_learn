@@ -4,6 +4,7 @@
    下面每种写法都打出它算出来的数。 */
 #include <stdio.h>
 
+/* Binary 就是 int (*)(int, int)：指向「收两个 int、返回 int」的函数。 */
 typedef int (*Binary)(int, int);
 
 static int add(int a, int b)
@@ -44,33 +45,34 @@ static int apply(int a, int b, int (*fn)(int, int))
 
 int main(void)
 {
-    int (*op)(int, int) = add;
-    int nums[5] = {10, 20, 30, 40, 50};
+    int (*op)(int, int) = add;                 /* 函数指针，格子里现在是 add */
+    int nums[5] = {10, 20, 30, 40, 50};        /* nums[3] 是 40 */
     int grid[2][3] = {
         {1, 2, 3},
-        {4, 5, 6}
+        {4, 5, 6}                              /* 第 1 行，[2] 是 6 */
     };
-    int *(*back)(int *, int) = element;
-    int (*picked)(int, int);
-    int (*(*chooser)(int))(int, int) = choose;
-    int (*ops[2])(int, int) = {add, sub};
-    int (*(*bundle)[2])(int, int) = &ops;
-    int *(*backs[1])(int *, int) = {element};
-    Binary named = sub;
+    int *(*back)(int *, int) = element;        /* 指向「返回 int *」的函数 */
+    int (*picked)(int, int);                   /* 等一下接住 choose 交回的函数指针 */
+    int (*(*chooser)(int))(int, int) = choose; /* 指向 choose 这种函数 */
+    int (*ops[2])(int, int) = {add, sub};      /* 两个函数指针排成数组 */
+    int (*(*bundle)[2])(int, int) = &ops;      /* 指向整段 ops */
+    int *(*backs[1])(int *, int) = {element};  /* 元素指向指针函数 */
+    Binary named = sub;                       /* 和 int (*named)(int, int) = sub 一样 */
 
-    /* 1. 函数指针直接调用。op 里现在是 add。 */
+    /* op(20, 3) 顺着格子里的地址调用 add，20 + 3 = 23。() 可以直接写在函数指针后面。 */
     printf("1. op(20, 3)\n");
     printf("  %d\n", op(20, 3));
 
-    /* 2. 先 * 取出函数，再调用。 */
+    /* (*op) 先取出函数，再 (20, 3)。和直接 op(20, 3) 调用的是同一个 add。 */
     printf("2. (*op)(20, 3)\n");
     printf("  %d\n", (*op)(20, 3));
 
-    /* 3. 函数名用在表达式里会退化成函数指针，再 * 一次还能调用。 */
+    /* *op 得到函数后，表达式里又退化成函数指针，所以再 * 一次仍能调用，还是 23。 */
     printf("3. (**op)(20, 3)\n");
     printf("  %d\n", (**op)(20, 3));
 
-    /* 4. 换成 sub。函数名和 &函数名 赋进去是同一个地址。 */
+    /* op = &sub 把格子换成 sub，20 - 3 = 17。
+       函数名用在表达式里会退化成函数指针，所以 add 和 &add 是同一个地址。(&add)(20, 3) 仍是 23。 */
     op = &sub;
     printf("4. op = &sub 之后 op(20, 3)\n");
     printf("  %d\n", op(20, 3));
