@@ -22,7 +22,7 @@ int main(void)
     printf("3. *(p + 4)\n");
     printf("  %d\n", *(p + 4));
     printf("4. 这一步是 %zu 字节，sizeof *p 是 %zu\n",
-           sizeof(int), sizeof *p);
+           sizeof(int), sizeof nums);
     /* p + 1 和 &nums[1] 是同一格。 */
     printf("5. p + 1 与 &nums[1]\n");
     printf("  %s\n", (p + 1 == &nums[1]) ? "相同" : "不同");
