@@ -16,7 +16,7 @@ static int sub(int a, int b)
 /* 返回 nums[index] 的地址，类型是 int *。不要返回局部变量的地址，那块内存函数结束就没了。 */
 static int *element(int *p, int index)
 {
-    return &p[index];
+    return p+index;
 }
 
 /* p + index 和 &p[index] 是同一地址。 */
@@ -94,7 +94,7 @@ int main(void)
     /* &p[3] 和 p + 3 是同一地址。 */
     printf("5. by_offset 和 element 返回的地址\n");
     printf("  %s\n",
-           (by_offset(nums, 3) == element(nums, 3)) ? "相同" : "不同");
+           (*by_offset(nums, 3) == *element(nums, 3)) ? "相同" : "不同");
 
     /* 下标为负，交回空指针。这里只比较，不 *。 */
     printf("6. maybe(nums, -1) == NULL ?\n");
