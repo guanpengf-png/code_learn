@@ -215,9 +215,11 @@ int main()
 
   // int nums[3]; // 声明了一个int[3]类型的数组,起名为nums,长度是3
 
-  int len = 3;
-  int nums[len];  // 可以的
-  len = 10;
+//   int len = 3;
+//   int nums[len];  // 可以的
+//   len = 10;
+//请求出一个数组的最小值，并得到对应的索引。
+
 
   // int nums[] = {10,20,30,40};
 
@@ -225,6 +227,19 @@ int main()
   // int nums[len] = {10,20,30};
   
   // 数组的长度一旦确定后就不能更改
+  int nums[] = {10,20,30,40,5,50,60};
+  int min_index=nums[0];
+  for (int i = 0; i < sizeof(nums)/sizeof(nums[0]); i++)
+  {
+    if (nums[i]<min_index)
+    {
+       min_index=nums[i];
+    }
+    //printf("%d",min_index);
+    
+  }
+   printf("%d",min_index);
+  
 
   return 0;
 }
