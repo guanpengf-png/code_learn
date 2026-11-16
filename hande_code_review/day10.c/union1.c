@@ -22,18 +22,18 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < LEN; i++)
     {
         printf("input id%d\n",i+1);
-        scanf("%d,",&person[i].id);
+        scanf("%d",&person[i].id);
         printf("input name%d\n",i+1);
-        scanf("%s,",person[i].name);
+        scanf("%s",person[i].name);
         getchar();
          printf("input gender%d\n",i+1);
-        scanf("%c,",&person[i].gender);
+        scanf("%c",&person[i].gender);
         getchar();
          printf("input age%d\n",i+1);
-        scanf("%d,",&person[i].age);
+        scanf("%d",&person[i].age);
 
         printf("input work%d\n",i+1);
-        scanf("%c,",&person[i].work);
+        scanf("%c",&person[i].work);
         getchar();
         
         if (person[i].work=='s')
