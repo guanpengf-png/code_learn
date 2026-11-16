@@ -2,6 +2,9 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/xiaojinghan/Documents/GitHub/code_learn/hande_code_review/day10.c/malloc1'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003E2C, symSize: 0x148 }
-  - { offsetInCU: 0x4E, offset: 0x4E, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003E2C, symSize: 0x148 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _is_leadyear, symObjAddr: 0x0, symBinAddr: 0x1000039DC, symSize: 0xC8 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _is_leadyear, symObjAddr: 0x0, symBinAddr: 0x1000039DC, symSize: 0xC8 }
+  - { offsetInCU: 0x69, offset: 0x69, size: 0x8, addend: 0x0, symName: _is_day, symObjAddr: 0xC8, symBinAddr: 0x100003AA4, symSize: 0x130 }
+  - { offsetInCU: 0x9F, offset: 0x9F, size: 0x8, addend: 0x0, symName: _is_follow, symObjAddr: 0x1F8, symBinAddr: 0x100003BD4, symSize: 0x1D4 }
+  - { offsetInCU: 0xD5, offset: 0xD5, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x3CC, symBinAddr: 0x100003DA8, symSize: 0x1B0 }
 ...
