@@ -22,6 +22,7 @@ struct Person{
 struct Person p2;
 struct Person p3={"xiao",'f',10};
 struct Person p4={.age=10,.gender='m',.name="xiao"};
+// struct Person *p5=&p4;
 int main(int argc, char const *argv[])
 {
     p1.age=101;
@@ -30,10 +31,15 @@ int main(int argc, char const *argv[])
     p2.age=101;
     p2.gender='m';
     p2.name="iverson";
+    struct Person *p5=&p4;
     printf("p1 id%d gender %c p1 name?%s",p1.age,p1.gender,p1.name);
     printf("p1 id%d gender %c p1 name?%s",p2.age,p2.gender,p2.name);
     printf("p1 id%d gender %c p1 name?%s",p3.age,p3.gender,p3.name);
     printf("p1 id%d gender %c p1 name?%s",p4.age,p4.gender,p4.name);
+    printf("p1 id%d gender %c p1 name?%s",p5->age,p5->gender,p5->name);
+    printf("p1 id%d gender %c p1 name?%s",(*p5).age,p5->gender,p5->name);
+    
+
 
 
     return 0;
