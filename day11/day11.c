@@ -1,157 +1,266 @@
-#include <stdio.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <stdbool.h>
+// // #include <>
+// // 定义一个结构体的数组
+// typedef struct 
+// {
+//     int *arr;
+//     size_t capacity;
+//     size_t length;
+// }Array;
+
+// // 初始化数组,动态分配内存空间,并对其相关成员进行初始化操作
+// void inti_array(Array *arr,size_t capactiy);
+// void inti_array(Array *arr,size_t capactiy){
+//     //inti_array
+//     //data
+//     //capacty
+//     arr->arr=(int*)malloc(sizeof(int)*capactiy);
+//     arr->capacity=capactiy;
+//     arr->length=0;
+
+// }
+
+// // 重新分配数组的内存空间(数组的数据是可以增加的,动态数组)
+
+// void resize_array(Array* new_array,size_t new_capactiy);
+// void resize_array(Array* new_array,size_t new_capactiy){
+//     new_array->arr=(int*)realloc(new_array->arr,new_capactiy*sizeof(int));
+//     new_array->capacity=new_capactiy;
+    
+// }
+// //if
+// //realloc
+
+// // 释放动态数组的内存空间
+// void destroy_array(Array* array);
+// void destroy_array(Array* array){
+//     //
+//     free(array->arr);
+//     array->arr=NULL;
+//     array->capacity=0;
+    
+
+
+// }
+
+
+// // 获取数组的长度(实际的数据个数)
+// int get_length(Array* Array);
+// int get_length(Array* Array){
+//     return Array->length;
+// }
+// //get length
+
+
+// // 向指定索引位置插入一个元素数据
+// void insert_index(Array* Array,size_t index,int element);
+// void insert_index(Array* Array,size_t index,int element){
+//     if (index>Array->length)
+//     {
+//         return;
+//     }
+//     if (Array->length==Array->capacity)
+//     {
+//        resize_array(Array,2*Array->capacity);
+//     }
+    
+//     for (int i = Array->length; i >index ; i--)
+//     {
+//         Array->arr[i]=Array->arr[i-1];
+//         //Array->arr[index]=element;
+//     }
+//      Array->arr[index]=element;
+//     Array->length++;
+    
+    
+// }
+//             //if 
+//             //insert
+
+// // 向数组尾部插入一个元素数据
+// void tail_insert(Array* Array,int element);
+// void tail_insert(Array* Array,int element){
+//     insert_index(Array,Array->length,element);
+// }
+// // 从指定索引位置移除一个元素数据
+// bool remove_at(Array* Array,size_t index,int *element);
+// bool remove_at(Array* Array,size_t index,int *element){
+//     if (index>Array->length)
+//     {
+//         return false;
+//     }
+//     *element=Array->arr[index];
+//     for (int i = index; i < Array->length-1; i++)
+//     {
+//         Array->arr[i]=Array->arr[i+1];
+//     }
+//     Array->length--;
+//     return true;
+    
+
+// }
+// // 从数组尾部移除一个元素数据
+// void remove_at_tail(Array* Array,int *element);
+// void remove_at_tail(Array* Array,int *element){
+//     remove_at(Array,Array->length-1,element);
+
+// }
+
+// // 遍历动态数组中的所有数据
+// void printf_array(Array*Array);
+// void printf_array(Array*Array){
+//     if (Array->length==0)
+//     {
+//         return;
+//     }
+    
+//     for (int i = 0; i < Array->length; i++)
+//     {
+//        printf("%d",Array->arr[i]);
+//        printf("\n");
+//     }
+//    // printf("\n");
+    
+// }
+
+
+// int main(int argc, char const *argv[])
+// {
+//     Array arr;
+//     inti_array(&arr,5);
+//     insert_index(&arr,0,1);
+//     insert_index(&arr,0,2);
+//     insert_index(&arr,0,3);
+//     insert_index(&arr,0,4);
+//     insert_index(&arr,0,5);
+//     //printf_array(&arr);
+//     //printf("get_length%d\n",get_length(&arr));
+//     //tail_insert(&arr,1);
+//     int del_num=0;
+//    // printf_array(&arr);
+//     remove_at(&arr, 3, &del_num);
+//     printf_array(&arr);
+//     printf("get_length%d\n",get_length(&arr));
+//     printf("移除的数据是:%d \n", del_num);
+//     remove_at_tail(&arr, &del_num);
+//     printf("数组长度:%d \n", get_length(&arr));
+//     printf_array(&arr);
+//     destroy_array(&arr);
+
+
+
+
+    
+//     return 0;
+// }
+//
 #include <stdlib.h>
+#include <stdio.h>
 #include <stdbool.h>
-// #include <>
-// 定义一个结构体的数组
-typedef struct 
-{
-    int *arr;
+typedef struct{
+    int *data;
     size_t capacity;
     size_t length;
-}Array;
 
-// 初始化数组,动态分配内存空间,并对其相关成员进行初始化操作
-void inti_array(Array *arr,size_t capactiy);
-void inti_array(Array *arr,size_t capactiy){
-    //inti_array
-    //data
-    //capacty
-    arr->arr=(int*)malloc(sizeof(int)*capactiy);
-    arr->capacity=capactiy;
-    arr->length=0;
 
-}
 
-// 重新分配数组的内存空间(数组的数据是可以增加的,动态数组)
-
-void resize_array(Array* new_array,size_t new_capactiy);
-void resize_array(Array* new_array,size_t new_capactiy){
-    new_array->arr=(int*)realloc(new_array->arr,new_capactiy*sizeof(int));
-    new_array->capacity=new_capactiy;
-    
-}
-//if
-//realloc
-
-// 释放动态数组的内存空间
-void destroy_array(Array* array);
-void destroy_array(Array* array){
-    //
-    free(array->arr);
-    array->arr=NULL;
-    array->capacity=0;
-    
-
+}Array_list;
+void init_array(Array_list *array,size_t input_capacity);
+void init_array(Array_list *array,size_t input_capacity){
+    array->data=(int*)malloc(sizeof(int)*input_capacity);
+    if (array->data==NULL)
+    {
+        array->capacity=0;
+        array->length=0;
+        return;
+    }
+    array->capacity=input_capacity;
+    array->length=0;
 
 }
-
-
-// 获取数组的长度(实际的数据个数)
-int get_length(Array* Array);
-int get_length(Array* Array){
-    return Array->length;
+void resize_array(Array_list*array,size_t rellocate_capacity){
+    array->data=(int*)realloc(array->data,sizeof(int)*rellocate_capacity);
 }
-//get length
-
-
-// 向指定索引位置插入一个元素数据
-void insert_index(Array* Array,size_t index,int element);
-void insert_index(Array* Array,size_t index,int element){
-    if (index>Array->length)
+void insert_array(Array_list*array,size_t position,int insert_number)
+{
+    if (position>array->length)
     {
         return;
     }
-    if (Array->length==Array->capacity)
+    if (array->capacity==array->length)
     {
-       resize_array(Array,2*Array->capacity);
+       resize_array(array,2*(array->capacity));
     }
     
-    for (int i = Array->length; i >index ; i--)
+    for (int i = array->length; i >position; i--)
     {
-        Array->arr[i]=Array->arr[i-1];
-        //Array->arr[index]=element;
+        array->data[i]=array->data[i-1];
+        printf("%d",i);
     }
-     Array->arr[index]=element;
-    Array->length++;
+    array->data[position]=insert_number;
+    array->length++;
     
-    
-}
-            //if 
-            //insert
 
-// 向数组尾部插入一个元素数据
-void tail_insert(Array* Array,int element);
-void tail_insert(Array* Array,int element){
-    insert_index(Array,Array->length,element);
+    
 }
-// 从指定索引位置移除一个元素数据
-bool remove_at(Array* Array,size_t index,int *element);
-bool remove_at(Array* Array,size_t index,int *element){
-    if (index>Array->length)
+int get_length(Array_list*array){
+    return array->length;
+}
+void insert_at_tail(Array_list*array,size_t insert_tail_number){
+    return insert_array(array,array->length,insert_tail_number);
+}
+bool delete_array(Array_list*array,size_t position,int *recordd_delete_number){
+    if (position>array->length)
     {
         return false;
     }
-    *element=Array->arr[index];
-    for (int i = index; i < Array->length-1; i++)
-    {
-        Array->arr[i]=Array->arr[i+1];
+    *recordd_delete_number=array->data[position];
+    for (size_t i=position;i<array->length-1;i++){
+         array->data[i]=array->data[i+1];
     }
-    Array->length--;
+    array->length--;
     return true;
     
-
 }
-// 从数组尾部移除一个元素数据
-void remove_at_tail(Array* Array,int *element);
-void remove_at_tail(Array* Array,int *element){
-    remove_at(Array,Array->length-1,element);
-
+void delete_at_tail(Array_list*array,int *element){
+    delete_array(array,array->length-1,&element);
+    }
+void printf_array(Array_list*array){
+    for (size_t i = 0; i < array->length; i++)
+    {
+       printf("array[%zu]:%d",i,array->data[i]);
+    }
+    printf("\n");
+    
 }
-
-// 遍历动态数组中的所有数据
-void printf_array(Array*Array);
-void printf_array(Array*Array){
-    if (Array->length==0)
-    {
-        return;
-    }
-    
-    for (int i = 0; i < Array->length; i++)
-    {
-       printf("%d",Array->arr[i]);
-       printf("\n");
-    }
-   // printf("\n");
-    
+void free_array(Array_list*array){
+    free(array->data);
+    array->data=NULL;
+    array->capacity=0;
 }
 
 
 int main(int argc, char const *argv[])
 {
-    Array arr;
-    inti_array(&arr,5);
-    insert_index(&arr,0,1);
-    insert_index(&arr,0,2);
-    insert_index(&arr,0,3);
-    insert_index(&arr,0,4);
-    insert_index(&arr,0,5);
-    //printf_array(&arr);
-    //printf("get_length%d\n",get_length(&arr));
-    //tail_insert(&arr,1);
-    int del_num=0;
-   // printf_array(&arr);
-    remove_at(&arr, 3, &del_num);
-    printf_array(&arr);
-    printf("get_length%d\n",get_length(&arr));
-    printf("移除的数据是:%d \n", del_num);
-    remove_at_tail(&arr, &del_num);
-    printf("数组长度:%d \n", get_length(&arr));
-    printf_array(&arr);
-    destroy_array(&arr);
-
-
-
+    Array_list Array_list;
+    init_array(&Array_list,5);
+    insert_array(&Array_list,0,1);
+    insert_array(&Array_list,0,1);
+    insert_array(&Array_list,0,1);
+    insert_array(&Array_list,0,1);
+    insert_array(&Array_list,0,1);
+    printf_array(&Array_list);
+    int h=get_length(&Array_list);
+    printf("%d",h);
+    int num=0;
+    delete_array(&Array_list,2,&num);
+    printf_array(&Array_list);
 
     
+
+
     return 0;
 }
+

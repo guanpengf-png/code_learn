@@ -2,15 +2,15 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/xiaojinghan/Documents/GitHub/code_learn/day11/day11'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _inti_array, symObjAddr: 0x0, symBinAddr: 0x100003A0C, symSize: 0x4C }
-  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _inti_array, symObjAddr: 0x0, symBinAddr: 0x100003A0C, symSize: 0x4C }
-  - { offsetInCU: 0x7F, offset: 0x7F, size: 0x8, addend: 0x0, symName: _resize_array, symObjAddr: 0x4C, symBinAddr: 0x100003A58, symSize: 0x48 }
-  - { offsetInCU: 0xB1, offset: 0xB1, size: 0x8, addend: 0x0, symName: _destroy_array, symObjAddr: 0x94, symBinAddr: 0x100003AA0, symSize: 0x38 }
-  - { offsetInCU: 0xD5, offset: 0xD5, size: 0x8, addend: 0x0, symName: _get_length, symObjAddr: 0xCC, symBinAddr: 0x100003AD8, symSize: 0x1C }
-  - { offsetInCU: 0xFD, offset: 0xFD, size: 0x8, addend: 0x0, symName: _insert_index, symObjAddr: 0xE8, symBinAddr: 0x100003AF4, symSize: 0x108 }
-  - { offsetInCU: 0x159, offset: 0x159, size: 0x8, addend: 0x0, symName: _tail_insert, symObjAddr: 0x1F0, symBinAddr: 0x100003BFC, symSize: 0x34 }
-  - { offsetInCU: 0x18B, offset: 0x18B, size: 0x8, addend: 0x0, symName: _remove_at, symObjAddr: 0x224, symBinAddr: 0x100003C30, symSize: 0xF0 }
-  - { offsetInCU: 0x1EB, offset: 0x1EB, size: 0x8, addend: 0x0, symName: _remove_at_tail, symObjAddr: 0x314, symBinAddr: 0x100003D20, symSize: 0x38 }
-  - { offsetInCU: 0x21D, offset: 0x21D, size: 0x8, addend: 0x0, symName: _printf_array, symObjAddr: 0x34C, symBinAddr: 0x100003D58, symSize: 0xA4 }
-  - { offsetInCU: 0x25D, offset: 0x25D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x3F0, symBinAddr: 0x100003DFC, symSize: 0x124 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _init_array, symObjAddr: 0x0, symBinAddr: 0x100003A44, symSize: 0x7C }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _init_array, symObjAddr: 0x0, symBinAddr: 0x100003A44, symSize: 0x7C }
+  - { offsetInCU: 0x7F, offset: 0x7F, size: 0x8, addend: 0x0, symName: _resize_array, symObjAddr: 0x7C, symBinAddr: 0x100003AC0, symSize: 0x40 }
+  - { offsetInCU: 0xB1, offset: 0xB1, size: 0x8, addend: 0x0, symName: _insert_array, symObjAddr: 0xBC, symBinAddr: 0x100003B00, symSize: 0x124 }
+  - { offsetInCU: 0x10D, offset: 0x10D, size: 0x8, addend: 0x0, symName: _get_length, symObjAddr: 0x1E0, symBinAddr: 0x100003C24, symSize: 0x1C }
+  - { offsetInCU: 0x135, offset: 0x135, size: 0x8, addend: 0x0, symName: _insert_at_tail, symObjAddr: 0x1FC, symBinAddr: 0x100003C40, symSize: 0x38 }
+  - { offsetInCU: 0x167, offset: 0x167, size: 0x8, addend: 0x0, symName: _delete_array, symObjAddr: 0x234, symBinAddr: 0x100003C78, symSize: 0xF0 }
+  - { offsetInCU: 0x1C7, offset: 0x1C7, size: 0x8, addend: 0x0, symName: _delete_at_tail, symObjAddr: 0x324, symBinAddr: 0x100003D68, symSize: 0x38 }
+  - { offsetInCU: 0x1F9, offset: 0x1F9, size: 0x8, addend: 0x0, symName: _printf_array, symObjAddr: 0x35C, symBinAddr: 0x100003DA0, symSize: 0x90 }
+  - { offsetInCU: 0x239, offset: 0x239, size: 0x8, addend: 0x0, symName: _free_array, symObjAddr: 0x3EC, symBinAddr: 0x100003E30, symSize: 0x38 }
+  - { offsetInCU: 0x25D, offset: 0x25D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x424, symBinAddr: 0x100003E68, symSize: 0xE4 }
 ...
