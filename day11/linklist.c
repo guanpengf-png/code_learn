@@ -160,5 +160,6 @@ int main(int argc, char const *argv[])
     add_element(&list,103);
     add_element(&list,104);
     print_linked(&list);
+    destry_Linklist(&list);
     return 0;
 }

@@ -181,7 +181,13 @@ void init_array(Array_list *array,size_t input_capacity){
 
 }
 void resize_array(Array_list*array,size_t rellocate_capacity){
-    array->data=(int*)realloc(array->data,sizeof(int)*rellocate_capacity);
+    int *new_data=(int*)realloc(array->data,sizeof(int)*rellocate_capacity);
+    if (new_data==NULL)
+    {
+        return;
+    }
+    array->data=new_data;
+    array->capacity=rellocate_capacity;
 }
 void insert_array(Array_list*array,size_t position,int insert_number)
 {
@@ -212,7 +218,7 @@ void insert_at_tail(Array_list*array,size_t insert_tail_number){
     return insert_array(array,array->length,insert_tail_number);
 }
 bool delete_array(Array_list*array,size_t position,int *recordd_delete_number){
-    if (position>array->length)
+    if (position>=array->length)
     {
         return false;
     }
@@ -225,7 +231,11 @@ bool delete_array(Array_list*array,size_t position,int *recordd_delete_number){
     
 }
 void delete_at_tail(Array_list*array,int *element){
-    delete_array(array,array->length-1,&element);
+    if (array->length==0)
+    {
+        return;
+    }
+    delete_array(array,array->length-1,element);
     }
 void printf_array(Array_list*array){
     for (size_t i = 0; i < array->length; i++)
@@ -239,6 +249,7 @@ void free_array(Array_list*array){
     free(array->data);
     array->data=NULL;
     array->capacity=0;
+    array->length=0;
 }
 
 
@@ -257,8 +268,9 @@ int main(int argc, char const *argv[])
     int num=0;
     delete_array(&Array_list,2,&num);
     printf_array(&Array_list);
+    free_array(&Array_list);
 
-    
+
 
 
     return 0;
