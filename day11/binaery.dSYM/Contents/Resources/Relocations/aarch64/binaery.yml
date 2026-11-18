@@ -2,7 +2,7 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/xiaojinghan/Documents/GitHub/code_learn/day11/binaery'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _binary_search, symObjAddr: 0x0, symBinAddr: 0x100003DCC, symSize: 0xE0 }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _binary_search, symObjAddr: 0x0, symBinAddr: 0x100003DCC, symSize: 0xE0 }
-  - { offsetInCU: 0xAF, offset: 0xAF, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0xE0, symBinAddr: 0x100003EAC, symSize: 0xC0 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _binary_search, symObjAddr: 0x0, symBinAddr: 0x100003DD4, symSize: 0xD8 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _binary_search, symObjAddr: 0x0, symBinAddr: 0x100003DD4, symSize: 0xD8 }
+  - { offsetInCU: 0xAF, offset: 0xAF, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0xD8, symBinAddr: 0x100003EAC, symSize: 0xC0 }
 ...
