@@ -161,5 +161,9 @@ int main(int argc, char const *argv[])
     add_element(&list,104);
     print_linked(&list);
     destry_Linklist(&list);
-    return 0;
+    int num=0;
+
+    set_link(&list,0,4,&num);print_linked(&list);
+
+  return 0;
 }
