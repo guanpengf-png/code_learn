@@ -234,6 +234,7 @@ int main(void)
 
     printf("\n=== 3) int ** 独立行: 不连续 ===\n");
     int **r = malloc(sizeof(int *) * 3);
+    
     for (int i = 0; i < 3; i++)
     {
         r[i] = malloc(sizeof(int) * 3);
